@@ -1,0 +1,22 @@
+{
+    "name": "TwitchEmoteExtension",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "permissions": [
+    	"contextMenus"
+    ],
+    "icons": {
+    	"16": "icon-small.png",
+    	"48": "icon-medium.png",
+    	"128": "icon-large.png"
+    },
+	"browser_action": {
+		"default_title": "Twitch Emotes",
+		"default_icon": "icon-small.png",
+		"default_popup": "popup.html"
+	},
+    "background": {
+    	"scripts": ["bower_components/angular/angular.js", "background.js"],
+    	"persistent": true
+    }
+}

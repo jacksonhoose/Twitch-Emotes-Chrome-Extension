@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Twitch Emotes</title>
+    <link href="/assets/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0px;
+        padding: 60px 0 0px;
+        background: white;
+        background-color:#6441a5;
+      }
+
+      #main {
+        width:300px;
+        padding:10px;
+        min-height:450px;
+      }
+
+      table tr {
+        cursor:pointer;
+      }
+
+      .sticky-header {
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        border-bottom:1px solid #eaeaea;
+      }
+
+      table {
+        background:#fff;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+      }
+
+      #search {
+        padding:1em 1em 1.5em;
+        height:60px;
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        background:#fff;
+        border-bottom:1px solid #eaeaea;
+      }
+    </style>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="popup.js"></script>
+  </head>
+  <body ng-app="TwitchEmotes">
+    <div id="main" ng-controller="EmoticonCtrl as emote">
+        <form id="search" class="form">
+          <input type="text" class="form-control" placeholder="Search" ng-model="emoticonSearch" />
+        </form>
+      <table class="table table-condensed table-hover table-bordered">
+        <tr ng-repeat="emoticon in emote.emoticons | filter: emoticonSearch" copy-emoticon="{{ emoticon.shortcut }}">
+          <td><img src="http://www.chatslang.com{{ emoticon.smiley }}"></td>
+          <td>{{ emoticon.shortcut }}</td>
+          <td>{{ emoticon.meaning }}</td>
+          <td><star></star></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
